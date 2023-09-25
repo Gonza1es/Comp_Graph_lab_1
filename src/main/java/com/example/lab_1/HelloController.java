@@ -93,10 +93,19 @@ public class HelloController {
 
     private Double validate(String text) {
         try {
-            return Double.parseDouble(text);
+            Double result = Double.parseDouble(text);
+            if (result > 300 || result < -300)
+                throw new IllegalArgumentException("Значение координаты не может быть больше 300 или меньше -300");
+            return result;
         } catch (NumberFormatException | NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Неверный формат данных");
+            alert.showAndWait();
+
+            throw new RuntimeException();
+        } catch (IllegalArgumentException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
             alert.showAndWait();
 
             throw new RuntimeException();
