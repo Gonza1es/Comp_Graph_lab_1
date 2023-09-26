@@ -67,9 +67,6 @@ public class HelloController {
 
     private void draw(GraphicsContext gc, Double[][] matrix) {
 
-        gc.clearRect(0, 0 , canvas.getWidth(), canvas.getHeight());
-        drawArea(gc);
-
         gc.strokeLine(start + matrix[0][0], start - matrix[0][1], start + matrix[1][0], start - matrix[1][1]);
         gc.strokeLine(start + matrix[1][0], start - matrix[1][1], start + matrix[2][0], start - matrix[2][1]);
         gc.strokeLine(start + matrix[2][0], start - matrix[2][1], start + matrix[0][0], start - matrix[0][1]);
